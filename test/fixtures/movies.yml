@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tmdb_id: 1
+  title: MyString
+  vote_count: 1
+  vote_average: 1.5
+  overview: MyText
+  poster_path: MyString
+  release_date: MyString
+
+two:
+  tmdb_id: 1
+  title: MyString
+  vote_count: 1
+  vote_average: 1.5
+  overview: MyText
+  poster_path: MyString
+  release_date: MyString

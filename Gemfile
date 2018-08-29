@@ -66,3 +66,5 @@ gem 'bootstrap'
 gem 'jquery-rails'
 
 gem 'themoviedb-api'
+
+gem 'figaro'

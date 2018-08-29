@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
     @upcomming = Tmdb::Movie.upcoming['results']
     @popular = Tmdb::Movie.popular['results']
     @top_rated = Tmdb::Movie.top_rated['results']
-    @movie = Tmdb::Search.movie('The Meg', page: 1)['results']
+    @movie = Tmdb::Movie.detail(550)
   end
 end
