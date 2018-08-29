@@ -25,18 +25,17 @@ class MoviesController < ApplicationController
   # POST /movies.json
   def create
     @movie = Movie.new
-    information = Tmdb::Movie.detail(:params[:id_movie])
-    @movie.tmdb_id = information[:id]
-    @movie.title = information[:title]
-    @movie.vote_count = information[:vote_count]
-    @movie.vote_average = information[:vote_average]
-    @movie.overview = information[:overview]
-    @movie.poster_path = 'http://image.tmdb.org/t/p/w342/' + information[:poster_path]
-    @movie.release_date = information[:release_date]
+    @movie.tmdb_id = params[:id]
+    @movie.title = params[:title]
+    @movie.vote_count = params[:vote_count]
+    @movie.vote_average = params[:vote_average]
+    @movie.overview = params[:overview]
+    @movie.poster_path = 'http://image.tmdb.org/t/p/w342/' + params[:poster_path]
+    @movie.release_date = params[:release_date]
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Movie was successfully created.' }
         format.json { render :show, status: :created, location: @movie }
       else
         format.html { render :new }

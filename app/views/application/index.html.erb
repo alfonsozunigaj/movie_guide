@@ -7,13 +7,10 @@
   </div>
 </div>
 
-<%= @movie %>
-
-
 <h2>Now Playing</h2>
 <div class="scrollmenu">
   <% @now_playing.each do |movie| %>
-      <%= image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path'], style: 'padding-left: 5px' %>
+      <%= link_to (image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path']), save_movie_path(id: movie[:id], title: movie[:title], vote_count: movie[:vote_count], vote_average: movie[:vote_average], overview: movie[:overview], poster_path: movie[:poster_path], release_date: movie[:release_date]) %>
   <% end %>
 </div>
 
