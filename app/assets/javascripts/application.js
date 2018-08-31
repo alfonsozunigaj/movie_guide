@@ -18,4 +18,14 @@
 //= require popper
 //= require bootstrap
 
-
+function showReview() {
+    var review_frame = document.getElementById("review_frame");
+    var show_review_button = document.getElementById("show_review_button");
+    if (review_frame.hidden) {
+        review_frame.hidden = false;
+        show_review_button.textContent = "Hide review";
+    } else {
+        review_frame.hidden = true;
+        show_review_button.textContent = "Read the full review";
+    }
+}

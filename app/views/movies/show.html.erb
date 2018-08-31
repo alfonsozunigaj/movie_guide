@@ -40,39 +40,26 @@
 <hr/>
 
 <div class="row">
-  <div class="col-sm-6">
-
+  <div class="col-sm-8">
+    <div class="card" style="width:100%">
+      <%= image_tag "nyt_logo.png", class: 'card-img-top', width: '100%', style: 'padding-left: 50px; padding-right: 50px' %>
+      <div class="card-body">
+        <h4 class="card-title" align="center"><%= @nyt_info['headline'] %></h4>
+        <p class="card-text"><%= @nyt_info['summary_short'] %></p>
+        <iframe hidden id="review_frame" width="100%" height="640px" src=<%= @nyt_info['link']['url'] %>></iframe>
+        <a id="show_review_button" onclick="showReview()" class="btn btn-light btn-block">Read the full review</a>
+      </div>
+    </div>
+    <%= @nyt_info %>
   </div>
-  <div class="col-sm-6 scrollable">
-    <% @tweets_title.each do |tweet| %>
-      <blockquote class="twitter-tweet">
-        <p><%= tweet.text %></p>
-        <p><b>- @<%= tweet.user.screen_name %></b></p>
-      </blockquote>
-    <% end %>
-    <% @tweets_base.each do |tweet| %>
-      <blockquote class="twitter-tweet">
-        <p><%= tweet.text %></p>
-        <p><b>- @<%= tweet.user.screen_name %></b></p>
-      </blockquote>
-    <% end %>
-    <% @tweets_query1.each do |tweet| %>
-      <blockquote class="twitter-tweet">
-        <p><%= tweet.text %></p>
-        <p><b>- @<%= tweet.user.screen_name %></b></p>
-      </blockquote>
-    <% end %>
-    <% @tweets_query2.each do |tweet| %>
-      <blockquote class="twitter-tweet">
-        <p><%= tweet.text %></p>
-        <p><b>- @<%= tweet.user.screen_name %></b></p>
-      </blockquote>
-    <% end %>
-    <% @tweets_query3.each do |tweet| %>
-      <blockquote class="twitter-tweet">
-        <p><%= tweet.text %></p>
-        <p><b>- @<%= tweet.user.screen_name %></b></p>
-      </blockquote>
-    <% end %>
+  <div class="col-sm-4">
+    <div class="card" style="width:100%">
+      <%= image_tag "twitter_logo.png", class: 'card-img-top', width: '100%', style: 'padding: 20px;' %>
+      <div class="card-body scrollable" style="height: 865px">
+        <h4 class="card-title">John Doe</h4>
+        <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+        <a href="#" class="btn btn-primary">See Profile</a>
+      </div>
+    </div>
   </div>
 </div>

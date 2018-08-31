@@ -9,18 +9,25 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
 
+  def nyt_review(title)
+    uri = URI("https://api.nytimes.com/svc/movies/v2/reviews/search.json")
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    uri.query = URI.encode_www_form({
+                                        "api-key" => ENV['NYT_API_KEY'],
+                                        :query => title
+                                    })
+    request = Net::HTTP::Get.new(uri.request_uri)
+    @result = JSON.parse(http.request(request).body)
+    @result.as_json['results'].first
+  end
+
   # GET /movies/1
   # GET /movies/1.json
   def show
-    base = @movie.title.delete(' ').delete("'").downcase
-    query1 = base + "movie"
-    query2 = base + "review"
-    query3 = base + "moviereview"
-    @tweets_title = $twitter_client.search(@movie.title, lang: "en", geocode: "37.433810,-81.509156,1000mi")
-    @tweets_base = $twitter_client.search(base, lang: "en", geocode: "37.433810,-81.509156,1000mi")
-    @tweets_query1 = $twitter_client.search(query1, lang: "en", geocode: "37.433810,-81.509156,1000mi")
-    @tweets_query2 = $twitter_client.search(query2, lang: "en", geocode: "37.433810,-81.509156,1000mi")
-    @tweets_query3 = $twitter_client.search(query3, lang: "en", geocode: "37.433810,-81.509156,1000mi")
+    title = @movie.title
+    # @tweets_title = $twitter_client.search(title, lang: "en", geocode: "37.433810,-81.509156,1000mi").take(30)
+    @nyt_info = nyt_review(title)
   end
 
   # GET /movies/new
