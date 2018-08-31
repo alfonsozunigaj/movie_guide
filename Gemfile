@@ -68,3 +68,5 @@ gem 'jquery-rails'
 gem 'themoviedb-api'
 
 gem 'figaro'
+
+gem 'twitter'

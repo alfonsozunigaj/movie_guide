@@ -36,3 +36,43 @@
     </p>
   </div>
 </div>
+
+<hr/>
+
+<div class="row">
+  <div class="col-sm-6">
+
+  </div>
+  <div class="col-sm-6 scrollable">
+    <% @tweets_title.each do |tweet| %>
+      <blockquote class="twitter-tweet">
+        <p><%= tweet.text %></p>
+        <p><b>- @<%= tweet.user.screen_name %></b></p>
+      </blockquote>
+    <% end %>
+    <% @tweets_base.each do |tweet| %>
+      <blockquote class="twitter-tweet">
+        <p><%= tweet.text %></p>
+        <p><b>- @<%= tweet.user.screen_name %></b></p>
+      </blockquote>
+    <% end %>
+    <% @tweets_query1.each do |tweet| %>
+      <blockquote class="twitter-tweet">
+        <p><%= tweet.text %></p>
+        <p><b>- @<%= tweet.user.screen_name %></b></p>
+      </blockquote>
+    <% end %>
+    <% @tweets_query2.each do |tweet| %>
+      <blockquote class="twitter-tweet">
+        <p><%= tweet.text %></p>
+        <p><b>- @<%= tweet.user.screen_name %></b></p>
+      </blockquote>
+    <% end %>
+    <% @tweets_query3.each do |tweet| %>
+      <blockquote class="twitter-tweet">
+        <p><%= tweet.text %></p>
+        <p><b>- @<%= tweet.user.screen_name %></b></p>
+      </blockquote>
+    <% end %>
+  </div>
+</div>

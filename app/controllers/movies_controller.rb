@@ -1,5 +1,7 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  require 'net/http'
+
 
   # GET /movies
   # GET /movies.json
@@ -10,6 +12,15 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    base = @movie.title.delete(' ').delete("'").downcase
+    query1 = base + "movie"
+    query2 = base + "review"
+    query3 = base + "moviereview"
+    @tweets_title = $twitter_client.search(@movie.title, lang: "en", geocode: "37.433810,-81.509156,1000mi")
+    @tweets_base = $twitter_client.search(base, lang: "en", geocode: "37.433810,-81.509156,1000mi")
+    @tweets_query1 = $twitter_client.search(query1, lang: "en", geocode: "37.433810,-81.509156,1000mi")
+    @tweets_query2 = $twitter_client.search(query2, lang: "en", geocode: "37.433810,-81.509156,1000mi")
+    @tweets_query3 = $twitter_client.search(query3, lang: "en", geocode: "37.433810,-81.509156,1000mi")
   end
 
   # GET /movies/new
