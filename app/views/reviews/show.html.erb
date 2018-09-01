@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Critics pick:</strong>
+  <%= @review.critics_pick %>
+</p>
+
+<p>
+  <strong>Headline:</strong>
+  <%= @review.headline %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @review.summary %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @review.url %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @review.image %>
+</p>
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>

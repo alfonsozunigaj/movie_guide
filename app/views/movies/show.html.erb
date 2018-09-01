@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <div class="row">
   <div class="col-sm-4">
     <%= image_tag @movie.poster_path %>
@@ -44,21 +43,27 @@
     <div class="card" style="width:100%">
       <%= image_tag "nyt_logo.png", class: 'card-img-top', width: '100%', style: 'padding-left: 50px; padding-right: 50px' %>
       <div class="card-body">
-        <h4 class="card-title" align="center"><%= @nyt_info['headline'] %></h4>
-        <p class="card-text"><%= @nyt_info['summary_short'] %></p>
-        <iframe hidden id="review_frame" width="100%" height="640px" src=<%= @nyt_info['link']['url'] %>></iframe>
-        <a id="show_review_button" onclick="showReview()" class="btn btn-light btn-block">Read the full review</a>
+        <% if @movie.review.nil? %>
+          <h4 class="card-title" align="center">No New York Times review found.</h4>
+        <% else %>
+          <h4 class="card-title" align="center"><%= @movie.review.headline %></h4>
+          <p class="card-text"><%= @movie.review.summary %></p>
+          <iframe hidden id="review_frame" width="100%" height="640px" src=<%= @movie.review.url   %>></iframe>
+          <a id="show_review_button" onclick="showReview()" class="btn btn-light btn-block">Read the full review</a>
+        <% end %>
       </div>
     </div>
-    <%= @nyt_info %>
   </div>
   <div class="col-sm-4">
     <div class="card" style="width:100%">
       <%= image_tag "twitter_logo.png", class: 'card-img-top', width: '100%', style: 'padding: 20px;' %>
       <div class="card-body scrollable" style="height: 865px">
-        <h4 class="card-title">John Doe</h4>
-        <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-        <a href="#" class="btn btn-primary">See Profile</a>
+        <% @movie.tweets.each do |tweet| %>
+          <blockquote class="twitter-tweet">
+            <p><br/><%= tweet.content %></p>
+            <p style="font-size: small"><b>- @<%= tweet.author %></b></p>
+          </blockquote>
+        <% end %>
       </div>
     </div>
   </div>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  critics_pick: 1
+  headline: MyString
+  summary: MyString
+  url: MyString
+  image: MyString
+
+two:
+  critics_pick: 1
+  headline: MyString
+  summary: MyString
+  url: MyString
+  image: MyString

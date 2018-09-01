@@ -9,25 +9,9 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
 
-  def nyt_review(title)
-    uri = URI("https://api.nytimes.com/svc/movies/v2/reviews/search.json")
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    uri.query = URI.encode_www_form({
-                                        "api-key" => ENV['NYT_API_KEY'],
-                                        :query => title
-                                    })
-    request = Net::HTTP::Get.new(uri.request_uri)
-    @result = JSON.parse(http.request(request).body)
-    @result.as_json['results'].first
-  end
-
   # GET /movies/1
   # GET /movies/1.json
   def show
-    title = @movie.title
-    # @tweets_title = $twitter_client.search(title, lang: "en", geocode: "37.433810,-81.509156,1000mi").take(30)
-    @nyt_info = nyt_review(title)
   end
 
   # GET /movies/new
