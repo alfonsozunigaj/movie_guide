@@ -29,3 +29,14 @@ function showReview() {
         show_review_button.textContent = "Read the full review";
     }
 }
+
+$(function() {
+
+    $("h2_movie")
+        .wrapInner("<span>")
+
+    $("h2_movie br")
+        .before("<span class='spacer'>")
+        .after("<span class='spacer'>");
+
+});

@@ -1,36 +1,44 @@
-<div class="row" style="padding-top: 45px; padding-bottom: 45px">
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button">Search</button>
-    </div>
-  </div>
-</div>
-
 <h2>Now Playing</h2>
 <div class="scrollmenu">
   <% @now_playing.each do |movie| %>
-      <%= link_to (image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path']), save_movie_path(id: movie[:id], title: movie[:title], vote_count: movie[:vote_count], vote_average: movie[:vote_average], overview: movie[:overview], poster_path: movie[:poster_path], release_date: movie[:release_date]) %>
+    <div class="movie">
+      <div class="image">
+        <%= link_to (image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path']), save_movie_path(id: movie[:id], title: movie[:title], vote_count: movie[:vote_count], vote_average: movie[:vote_average], overview: movie[:overview], poster_path: movie[:poster_path], release_date: movie[:release_date]) %>
+        <h2_movie><span><%= (movie[:vote_average].to_f*10).to_i %>%</span></h2_movie>
+      </div>
+    </div>
   <% end %>
 </div>
 
 <h2 style="padding-top: 50px">Upcomming Movies</h2>
 <div class="scrollmenu">
   <% @upcomming.each do |movie| %>
-    <%= image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path'], style: 'padding-left: 5px' %>
-  <% end %>
+    <div class="movie">
+      <div class="image">
+        <%= link_to (image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path']), save_movie_path(id: movie[:id], title: movie[:title], vote_count: movie[:vote_count], vote_average: movie[:vote_average], overview: movie[:overview], poster_path: movie[:poster_path], release_date: movie[:release_date]) %>
+        <h2_movie><span><%= (movie[:vote_average].to_f*10).to_i %>%</span></h2_movie>
+      </div>
+    </div>  <% end %>
 </div>
 
 <h2 style="padding-top: 50px">Popular</h2>
 <div class="scrollmenu">
   <% @popular.each do |movie| %>
-    <%= image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path'], style: 'padding-left: 5px' %>
-  <% end %>
+    <div class="movie">
+      <div class="image">
+        <%= link_to (image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path']), save_movie_path(id: movie[:id], title: movie[:title], vote_count: movie[:vote_count], vote_average: movie[:vote_average], overview: movie[:overview], poster_path: movie[:poster_path], release_date: movie[:release_date]) %>
+        <h2_movie><span><%= (movie[:vote_average].to_f*10).to_i %>%</span></h2_movie>
+      </div>
+    </div>  <% end %>
 </div>
 
 <h2 style="padding-top: 50px">Top Rated</h2>
 <div class="scrollmenu">
   <% @top_rated.each do |movie| %>
-    <%= image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path'], style: 'padding-left: 5px' %>
-  <% end %>
+    <div class="movie">
+      <div class="image">
+        <%= link_to (image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path']), save_movie_path(id: movie[:id], title: movie[:title], vote_count: movie[:vote_count], vote_average: movie[:vote_average], overview: movie[:overview], poster_path: movie[:poster_path], release_date: movie[:release_date]) %>
+        <h2_movie><span><%= (movie[:vote_average].to_f*10).to_i %>%</span></h2_movie>
+      </div>
+    </div>  <% end %>
 </div>

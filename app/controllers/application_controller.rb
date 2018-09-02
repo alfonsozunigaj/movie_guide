@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
           review.headline = nyt_info['headline']
           review.summary = nyt_info['summary_short']
           review.url = nyt_info['link']['url']
-          review.image = nyt_info['multimedia']['src']
+          # review.image = nyt_info['multimedia']['src']
           review.movie = @movie
           if review.valid?
             review.save
@@ -68,5 +68,10 @@ class ApplicationController < ActionController::Base
     else
       redirect_to checked
     end
+  end
+
+  def results
+    @search = params[:search]
+    @results = Tmdb::Search.movie(@search)[:results]
   end
 end
