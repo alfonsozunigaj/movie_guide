@@ -1,10 +1,15 @@
 class ApplicationController < ActionController::Base
+  require 'uri'
+  require 'net/http'
+
+  include ApplicationHelper
+
   def index
     @now_playing = Tmdb::Movie.now_playing['results']
     @upcomming = Tmdb::Movie.upcoming['results']
     @popular = Tmdb::Movie.popular['results']
     @top_rated = Tmdb::Movie.top_rated['results']
-    @movie = Tmdb::Movie.detail(550)
+    @most_viewed = Movie.all.order(:visits).reverse.take(20)
   end
 
   def nyt_review(title)
@@ -31,6 +36,8 @@ class ApplicationController < ActionController::Base
       @movie.overview = params[:overview]
       @movie.poster_path = 'http://image.tmdb.org/t/p/w342/' + params[:poster_path]
       @movie.release_date = params[:release_date]
+      @movie.last_seen = DateTime.now
+      @movie.visits = 0
       if @movie.valid?
         @movie.save
 
@@ -41,6 +48,9 @@ class ApplicationController < ActionController::Base
           new_tweet.content = tweet.text
           new_tweet.author = tweet.user.screen_name
           new_tweet.movie = @movie
+          analysis = analyse(tweet.text).to_s
+          parsed_json = ActiveSupport::JSON.decode(analysis)
+          new_tweet.score_tag = parsed_json['score_tag']
           if new_tweet.valid?
             new_tweet.save
           end

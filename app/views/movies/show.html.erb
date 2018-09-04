@@ -33,6 +33,16 @@
       <strong>Release date:</strong>
       <%= @movie.release_date %>
     </p>
+
+    <p>
+      <strong>Visits:</strong>
+      <%= @movie.visits %>
+    </p>
+
+    <p>
+      <strong>Last seen:</strong>
+      <%= @movie.last_seen %>
+    </p>
   </div>
 
   <div class="col-sm-2">
@@ -80,7 +90,7 @@
         <% @movie.tweets.each do |tweet| %>
           <blockquote class="twitter-tweet">
             <p><br/><%= tweet.content %></p>
-            <p style="font-size: small"><b>- @<%= tweet.author %></b></p>
+            <p style="font-size: small"><b>- @<%= tweet.author %> -- <%= tweet.score_tag %></b></p>
           </blockquote>
         <% end %>
       </div>

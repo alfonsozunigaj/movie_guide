@@ -1,4 +1,16 @@
-<h2>Now Playing</h2>
+<h2>Most Viewed</h2>
+<div class="scrollmenu">
+  <% @most_viewed.each do |movie| %>
+    <div class="movie">
+      <div class="image">
+        <%= link_to (image_tag movie.poster_path, width: '185px'), movie %>
+        <h2_movie><span><%= (movie.vote_average.to_f*10).to_i %>%</span></h2_movie>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<h2 style="padding-top: 50px">Now Playing</h2>
 <div class="scrollmenu">
   <% @now_playing.each do |movie| %>
     <div class="movie">
@@ -10,7 +22,7 @@
   <% end %>
 </div>
 
-<h2 style="padding-top: 50px">Upcomming Movies</h2>
+<h2 style="padding-top: 50px">Upcoming Movies</h2>
 <div class="scrollmenu">
   <% @upcomming.each do |movie| %>
     <div class="movie">

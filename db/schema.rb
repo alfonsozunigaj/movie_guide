@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_01_202225) do
+ActiveRecord::Schema.define(version: 2018_09_03_163230) do
 
   create_table "movies", force: :cascade do |t|
     t.integer "tmdb_id"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2018_09_01_202225) do
     t.string "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "last_seen"
+    t.integer "visits"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -43,6 +45,7 @@ ActiveRecord::Schema.define(version: 2018_09_01_202225) do
     t.integer "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "score_tag"
     t.index ["movie_id"], name: "index_tweets_on_movie_id"
   end
 
