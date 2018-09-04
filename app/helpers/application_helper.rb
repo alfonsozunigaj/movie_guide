@@ -18,4 +18,20 @@ module ApplicationHelper
     response = http.request(request)
     response.read_body
   end
+
+  def parse_sentiment(grade)
+    if grade == "P+"
+      return 5
+    elsif grade == "P"
+      return 4
+    elsif grade == "NEU"
+      return 3
+    elsif grade == "N"
+      return 2
+    elsif grade == "N+"
+      return 1
+    else
+      return 0
+    end
+  end
 end

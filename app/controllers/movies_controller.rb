@@ -12,6 +12,12 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    @opinion = 0
+    @movie.tweets.each do |tweet|
+      @opinion += tweet.score_tag.to_i
+    end
+    @opinion /= @movie.tweets.count.to_f
+    @movie.update(visits: @movie.visits + 1, last_seen: DateTime.now)
   end
 
   # GET /movies/new

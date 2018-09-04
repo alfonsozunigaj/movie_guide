@@ -4,44 +4,15 @@
   </div>
 
   <div class="col-sm-6">
-    <p>
-      <strong>Tmdb:</strong>
-      <%= @movie.tmdb_id %>
-    </p>
 
-    <p>
-      <strong>Title:</strong>
-      <%= @movie.title %>
-    </p>
-
-    <p>
-      <strong>Vote count:</strong>
-      <%= @movie.vote_count %>
-    </p>
-
-    <p>
-      <strong>Vote average:</strong>
-      <%= @movie.vote_average %>
-    </p>
-
-    <p>
-      <strong>Overview:</strong>
-      <%= @movie.overview %>
-    </p>
+    <h1 style="padding-top: 45px"><b><%= @movie.title %></b></h1>
+    <br/>
+    <h5><strong>General</strong></h5>
+    <%= @movie.overview %>
 
     <p>
       <strong>Release date:</strong>
       <%= @movie.release_date %>
-    </p>
-
-    <p>
-      <strong>Visits:</strong>
-      <%= @movie.visits %>
-    </p>
-
-    <p>
-      <strong>Last seen:</strong>
-      <%= @movie.last_seen %>
     </p>
   </div>
 
@@ -86,6 +57,11 @@
   <div class="col-sm-4">
     <div class="card" style="width:100%">
       <%= image_tag "twitter_logo.png", class: 'card-img-top', width: '100%', style: 'padding: 20px;' %>
+      <div style="padding-left: 25px; padding-right: 25px">
+        <div class="progress" style="height:30px">
+          <div class="progress-bar" style="width:<%= @opinion * 20.0 %>%; height: 30px"><%= @opinion %></div>
+        </div>
+      </div>
       <div class="card-body scrollable" style="height: 865px">
         <% @movie.tweets.each do |tweet| %>
           <blockquote class="twitter-tweet">

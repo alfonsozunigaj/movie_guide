@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
           new_tweet.movie = @movie
           analysis = analyse(tweet.text).to_s
           parsed_json = ActiveSupport::JSON.decode(analysis)
-          new_tweet.score_tag = parsed_json['score_tag']
+          new_tweet.score_tag = parse_sentiment(parsed_json['score_tag']).to_s
           if new_tweet.valid?
             new_tweet.save
           end
