@@ -41,21 +41,6 @@ class ApplicationController < ActionController::Base
       if @movie.valid?
         @movie.save
 
-        tweets_title = $twitter_client.search(params[:title], lang: "en", geocode: "37.433810,-81.509156,1000mi").take(30)
-        puts tweets_title.as_json
-        tweets_title.each do |tweet|
-          new_tweet = Tweet.new
-          new_tweet.content = tweet.text
-          new_tweet.author = tweet.user.screen_name
-          new_tweet.movie = @movie
-          analysis = analyse(tweet.text).to_s
-          parsed_json = ActiveSupport::JSON.decode(analysis)
-          new_tweet.score_tag = parse_sentiment(parsed_json['score_tag']).to_s
-          if new_tweet.valid?
-            new_tweet.save
-          end
-        end
-
         nyt_info = nyt_review(params[:title])
         unless nyt_info.nil?
           review = Review.new
@@ -68,6 +53,28 @@ class ApplicationController < ActionController::Base
           if review.valid?
             review.save
             @movie.review = review
+          end
+        end
+
+        tweets_title = $twitter_client.search(params[:title], lang: "en", geocode: "37.433810,-81.509156,1000mi")
+        $counter = 10
+        tweets_title.each do |tweet|
+          new_tweet = Tweet.new
+          new_tweet.content = tweet.text
+          new_tweet.author = tweet.user.screen_name
+          new_tweet.movie = @movie
+          analysis = analyse(tweet.text)
+          puts analysis['subjectivity']
+          new_tweet.score_tag = parse_sentiment(analysis['score_tag']).to_s
+          if analysis['subjectivity'] == 'SUBJECTIVE' and new_tweet.score_tag != '0'
+            if new_tweet.valid?
+              $counter -= 1
+              puts "SAVED"
+              new_tweet.save
+            end
+          end
+          if $counter == 0
+            break
           end
         end
 

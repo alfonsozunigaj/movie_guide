@@ -44,6 +44,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    animate-rails (1.0.10)
+      rails
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -99,6 +101,8 @@ GEM
       domain_name (~> 0.5)
     http-form_data (2.1.1)
     http_parser.rb (0.6.0)
+    httparty (0.16.2)
+      multi_xml (>= 0.5.2)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -132,6 +136,7 @@ GEM
     minitest (5.11.3)
     msgpack (1.2.4)
     multi_json (1.13.1)
+    multi_xml (0.6.0)
     multipart-post (2.0.0)
     naught (1.1.0)
     netrc (0.11.0)
@@ -247,6 +252,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  animate-rails
   bootsnap (>= 1.1.0)
   bootstrap
   byebug
@@ -254,9 +260,11 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   figaro
+  httparty
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
+  nokogiri
   puma (~> 3.11)
   rails (~> 5.2.0)
   sass-rails (~> 5.0)

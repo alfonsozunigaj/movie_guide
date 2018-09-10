@@ -70,3 +70,9 @@ gem 'themoviedb-api'
 gem 'figaro'
 
 gem 'twitter'
+
+gem 'animate-rails'
+
+gem 'httparty'
+
+gem 'nokogiri'

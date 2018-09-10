@@ -1,3 +1,50 @@
+<div class="row" style="padding-bottom: 25px">
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-5">
+            <%= image_tag 'tmdb_logo_2.svg', width: '100%' %>
+          </div>
+          <div class="col-sm-7">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Some example text. Some example text.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-5">
+            <%= image_tag 'nyt_logo_2.png', width: '100%' %>
+          </div>
+          <div class="col-sm-7">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Some example text. Some example text.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-5">
+            <%= image_tag 'twitter_logo_2.png', width: '100%' %>
+          </div>
+          <div class="col-sm-7">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Some example text. Some example text.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="row">
   <div class="col-sm-4">
     <%= image_tag @movie.poster_path %>
@@ -9,11 +56,10 @@
     <br/>
     <h5><strong>General</strong></h5>
     <%= @movie.overview %>
-
-    <p>
+    <br/>
+    <br/>
       <strong>Release date:</strong>
       <%= @movie.release_date %>
-    </p>
   </div>
 
   <div class="col-sm-2">
@@ -50,6 +96,7 @@
           <p class="card-text"><%= @movie.review.summary %></p>
           <iframe hidden id="review_frame" width="100%" height="640px" src=<%= @movie.review.url   %>></iframe>
           <a id="show_review_button" onclick="showReview()" class="btn btn-light btn-block">Read the full review</a>
+          <p><%= analyseNYT(@movie.review.url) %></p>
         <% end %>
       </div>
     </div>
