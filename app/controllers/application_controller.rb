@@ -50,6 +50,8 @@ class ApplicationController < ActionController::Base
           review.url = nyt_info['link']['url']
           # review.image = nyt_info['multimedia']['src']
           review.movie = @movie
+          review.body = getNYT(review.url)
+          review.score = analyseNYT(review.body)
           if review.valid?
             review.save
             @movie.review = review
@@ -57,7 +59,7 @@ class ApplicationController < ActionController::Base
         end
 
         tweets_title = $twitter_client.search(params[:title], lang: "en", geocode: "37.433810,-81.509156,1000mi")
-        $counter = 10
+        $counter = 15
         tweets_title.each do |tweet|
           new_tweet = Tweet.new
           new_tweet.content = tweet.text

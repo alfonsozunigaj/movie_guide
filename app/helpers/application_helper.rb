@@ -28,7 +28,7 @@ module ApplicationHelper
 
   end
 
-  def analyseNYT(url)
+  def getNYT(url)
     scraper = Scraper.new(url)
     texts = scraper.get_texts
 
@@ -36,11 +36,26 @@ module ApplicationHelper
 
     (0..texts.size).each do |index|
       full_text << "#{texts[index]} "
-      if full_text.split.size > 400
-        break
-      end
     end
-    parse_sentiment(analyse(full_text)['score_tag']).to_s
+    full_text
+  end
+
+  def analyseNYT(text)
+    puts text
+    words = text.split
+    aux = ""
+    if words.size > 400
+      counter = 0
+      while counter != 400
+        aux << words[counter] + " "
+        counter += 1
+      end
+      puts "asdasgerfdthbzedtfghwrhghedfthdrgts"
+      puts aux
+      parse_sentiment(analyse(aux)['score_tag']).to_f
+    else
+      parse_sentiment(analyse(text)['score_tag']).to_f
+    end
   end
 
   def analyse(text)

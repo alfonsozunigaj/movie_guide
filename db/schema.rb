@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_03_163230) do
+ActiveRecord::Schema.define(version: 2018_09_10_232904) do
 
   create_table "movies", force: :cascade do |t|
     t.integer "tmdb_id"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 2018_09_03_163230) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "movie_id"
+    t.float "score"
+    t.text "body"
     t.index ["movie_id"], name: "index_reviews_on_movie_id"
   end
 
