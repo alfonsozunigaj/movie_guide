@@ -81,3 +81,5 @@ gem 'animate-rails'
 gem 'httparty'
 
 gem 'nokogiri'
+
+gem 'sidekiq'

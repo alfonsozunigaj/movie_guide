@@ -1,0 +1,1 @@
+analizerworker: bundle exec sidekiq -c 2

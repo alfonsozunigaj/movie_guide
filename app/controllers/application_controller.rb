@@ -28,36 +28,34 @@ class ApplicationController < ActionController::Base
   def save_movie
     checked = Movie.find_by_tmdb_id(params[:id])
     if checked.nil?
-      @movie = Movie.new
-      @movie.tmdb_id = params[:id]
-      @movie.title = params[:title]
-      @movie.vote_count = params[:vote_count]
-      @movie.vote_average = params[:vote_average]
-      @movie.overview = params[:overview]
-      @movie.poster_path = 'http://image.tmdb.org/t/p/w342/' + params[:poster_path]
-      @movie.release_date = params[:release_date]
-      @movie.last_seen = DateTime.now
-      @movie.visits = 0
+      tmdb_id = params[:id]
+      title = params[:title]
+      vote_count = params[:vote_count]
+      vote_average = params[:vote_average]
+      overview = params[:overview]
+      poster_path = 'http://image.tmdb.org/t/p/w342/' + params[:poster_path]
+      release_date = params[:release_date]
+      last_seen = DateTime.now
+      visits = 0
+      @movie = Movie.new(tmdb_id: tmdb_id, title: title, vote_average: vote_average, vote_count: vote_count, overview: overview, poster_path: poster_path, release_date: release_date, last_seen: last_seen, visits: visits)
       if @movie.valid?
         @movie.save
 
-        nyt_info = nyt_review(params[:title])
+        nyt_info = nyt_review(title)
         unless nyt_info.nil?
-          review = Review.new
-          review.critics_pick = nyt_info['critics_pick']
-          review.headline = nyt_info['headline']
-          review.summary = nyt_info['summary_short']
-          review.url = nyt_info['link']['url']
-          # review.image = nyt_info['multimedia']['src']
-          review.movie = @movie
-          review.body = getNYT(review.url)
-          review.score = analyseNYT(review.body)
+          critics_pick = nyt_info['critics_pick']
+          headline = nyt_info['headline']
+          summary = nyt_info['summary_short']
+          url = nyt_info['link']['url']
+          movie = @movie
+          body = getNYT(url)
+          review = Review.new(critics_pick: critics_pick, headline: headline, summary: summary, url: url, movie: movie, body: body)
           if review.valid?
             review.save
-            @movie.review = review
+            @movie.update(review: review)
           end
         end
-
+=begin
         tweets_title = $twitter_client.search(params[:title], lang: "en", geocode: "37.433810,-81.509156,1000mi")
         $counter = 15
         tweets_title.each do |tweet|
@@ -79,7 +77,9 @@ class ApplicationController < ActionController::Base
             break
           end
         end
-
+=end
+        SearchReviewJob.perform_later(@movie)
+        SearchTweetsJob.perform_later(@movie)
         redirect_to @movie, notice: 'Movie saved'
       else
         redirect_to root_path, alert: 'Movie could not be saved'

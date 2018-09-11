@@ -8,7 +8,7 @@
           </div>
           <div class="col-sm-7">
             <div class="row-fluid" align="center">
-              <div class="span12 text-center" style="font-size: 65px; vertical-align: bottom; display: table-cell"><%= (@movie.vote_average.to_s.delete('.').to_i / 20.0).round(1) %><b style="font-size: large; color: gray"><i>/ 5</i></b></div>
+              <div class="span12 text-center" style="font-size: 65px; vertical-align: bottom; display: table-cell"><%= (@movie.vote_average.to_s.delete('.').to_i / 20.0).round(1) %><b style="font-size: x-large; color: gray"><i>/ 5.0</i></b></div>
             </div>
           </div>
         </div>
@@ -24,7 +24,12 @@
           </div>
           <div class="col-sm-7">
             <div class="row-fluid" align="center">
-              <div class="span12 text-center" style="font-size: 65px; vertical-align: bottom; display: table-cell"><%= @movie.review.score %><b style="font-size: large; color: gray"><i>/ 5</i></b></div>
+              <% if @movie.review.nil? or @movie.review.score.nil? %>
+                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+              <% else %>
+              <div class="span12 text-center" style="font-size: 65px; vertical-align: bottom; display: table-cell"><%=  @movie.review.score  %>
+                <b style="font-size: x-large; color: gray"><i>/ 5.0</i></b></div>
+              <% end %>
             </div>
           </div>
         </div>
@@ -40,7 +45,12 @@
           </div>
           <div class="col-sm-7">
             <div class="row-fluid" align="center">
-              <div class="span12 text-center" style="font-size: 65px; vertical-align: bottom; display: table-cell"><%= @opinion.round(1) %><b style="font-size: large; color: gray"><i>/ 5</i></b></div>
+              <% if @movie.tweets.count < 5 %>
+                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+              <% else %>
+              <div class="span12 text-center" style="font-size: 65px; vertical-align: bottom; display: table-cell"><%=  @opinion.round(1)  %>
+                <b style="font-size: x-large; color: gray"><i>/ 5.0</i></b></div>
+              <% end %>
             </div>
           </div>
         </div>
@@ -110,7 +120,7 @@
       <%= image_tag "twitter_logo.png", class: 'card-img-top', width: '100%', style: 'padding: 20px;' %>
       <div style="padding-left: 25px; padding-right: 25px">
         <div class="progress" style="height:30px">
-          <div class="progress-bar" style="width:<%= @opinion * 20.0 %>%; height: 30px"><%= @opinion %></div>
+          <div class="progress-bar" style="width:<%= @opinion * 20.0 %>%; height: 30px"><%= @opinion.round(1) %></div>
         </div>
       </div>
       <div class="card-body scrollable" style="height: 865px">
