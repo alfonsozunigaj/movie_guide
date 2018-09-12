@@ -104,6 +104,7 @@ class ApplicationController < ActionController::Base
       elsif checked.review.score == 0.0
         SearchReviewJob.perform_later(checked)
       end
+      SearchTweetsJob.perform_later(@movie)
       redirect_to checked
     end
   end
