@@ -1,55 +1,55 @@
-<h2>Most Searched</h2>
+<h2 style="font-family: 'Fjalla One', sans-serif">Most Searched</h2>
 <div class="scrollmenu">
   <% @most_viewed.each do |movie| %>
     <div class="movie">
       <div class="image">
-        <%= link_to (image_tag movie.poster_path, width: '185px'), movie %>
+        <%= link_to (image_tag movie.poster_path, width: '185px', class: 'zoom polaroid'), movie %>
         <h2_movie><span><%= (movie.vote_average.to_f*10).to_i %>%</span></h2_movie>
       </div>
     </div>
   <% end %>
 </div>
 
-<h2 style="padding-top: 50px">Now Playing</h2>
+<h2 style="padding-top: 50px; font-family: 'Fjalla One', sans-serif">Now Playing</h2>
 <div class="scrollmenu">
   <% @now_playing.each do |movie| %>
     <div class="movie">
       <div class="image">
-        <%= link_to (image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path']), save_movie_path(id: movie[:id], title: movie[:title], vote_count: movie[:vote_count], vote_average: movie[:vote_average], overview: movie[:overview], poster_path: movie[:poster_path], release_date: movie[:release_date]) %>
+        <%= link_to (image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path'], class: 'zoom polaroid'), save_movie_path(id: movie[:id], title: movie[:title], vote_count: movie[:vote_count], vote_average: movie[:vote_average], overview: movie[:overview], poster_path: movie[:poster_path], release_date: movie[:release_date]) %>
         <h2_movie><span><%= (movie[:vote_average].to_f*10).to_i %>%</span></h2_movie>
       </div>
     </div>
   <% end %>
 </div>
 
-<h2 style="padding-top: 50px">Upcoming Movies</h2>
+<h2 style="padding-top: 50px; font-family: 'Fjalla One', sans-serif">Upcoming Movies</h2>
 <div class="scrollmenu">
   <% @upcomming.each do |movie| %>
     <div class="movie">
       <div class="image">
-        <%= link_to (image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path']), save_movie_path(id: movie[:id], title: movie[:title], vote_count: movie[:vote_count], vote_average: movie[:vote_average], overview: movie[:overview], poster_path: movie[:poster_path], release_date: movie[:release_date]) %>
+        <%= link_to (image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path'], class: 'zoom polaroid'), save_movie_path(id: movie[:id], title: movie[:title], vote_count: movie[:vote_count], vote_average: movie[:vote_average], overview: movie[:overview], poster_path: movie[:poster_path], release_date: movie[:release_date]) %>
         <h2_movie><span><%= (movie[:vote_average].to_f*10).to_i %>%</span></h2_movie>
       </div>
     </div>  <% end %>
 </div>
 
-<h2 style="padding-top: 50px">Popular</h2>
+<h2 style="padding-top: 50px; font-family: 'Fjalla One', sans-serif">Popular</h2>
 <div class="scrollmenu">
   <% @popular.each do |movie| %>
     <div class="movie">
       <div class="image">
-        <%= link_to (image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path']), save_movie_path(id: movie[:id], title: movie[:title], vote_count: movie[:vote_count], vote_average: movie[:vote_average], overview: movie[:overview], poster_path: movie[:poster_path], release_date: movie[:release_date]) %>
+        <%= link_to (image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path'], class: 'zoom polaroid'), save_movie_path(id: movie[:id], title: movie[:title], vote_count: movie[:vote_count], vote_average: movie[:vote_average], overview: movie[:overview], poster_path: movie[:poster_path], release_date: movie[:release_date]) %>
         <h2_movie><span><%= (movie[:vote_average].to_f*10).to_i %>%</span></h2_movie>
       </div>
     </div>  <% end %>
 </div>
 
-<h2 style="padding-top: 50px">Top Rated</h2>
+<h2 style="padding-top: 50px; font-family: 'Fjalla One', sans-serif">Top Rated</h2>
 <div class="scrollmenu">
   <% @top_rated.each do |movie| %>
     <div class="movie">
       <div class="image">
-        <%= link_to (image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path']), save_movie_path(id: movie[:id], title: movie[:title], vote_count: movie[:vote_count], vote_average: movie[:vote_average], overview: movie[:overview], poster_path: movie[:poster_path], release_date: movie[:release_date]) %>
+        <%= link_to (image_tag 'http://image.tmdb.org/t/p/w185/' + movie['poster_path'], class: 'zoom polaroid'), save_movie_path(id: movie[:id], title: movie[:title], vote_count: movie[:vote_count], vote_average: movie[:vote_average], overview: movie[:overview], poster_path: movie[:poster_path], release_date: movie[:release_date]) %>
         <h2_movie><span><%= (movie[:vote_average].to_f*10).to_i %>%</span></h2_movie>
       </div>
     </div>  <% end %>

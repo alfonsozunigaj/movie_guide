@@ -1,15 +1,17 @@
-<h3>Results for "<%= @search %>"</h3>
+<h2 style="font-family: 'Fjalla One', sans-serif">Results for <i><%= @search %></i></h2>
 
 <br/>
 
 <% @results.each do |movie| %>
   <% unless movie[:poster_path].nil? %>
-    <div class="row" style="vertical-align: center">
+    <div class="row" style="vertical-align: center; font-family: 'Ubuntu', sans-serif">
       <div class="col-sm-2">
+        <br/>
         <%= link_to (image_tag ('http://image.tmdb.org/t/p/w500/' + movie[:poster_path]), class: 'card-img-top'), save_movie_path(id: movie[:id], title: movie[:title], overview: movie[:overview], poster_path: movie[:poster_path], vote_average: movie[:vote_average], backdrop_path: movie[:backdrop_path], release_date: movie[:release_date]) %>
       </div>
       <div class="col-sm-8">
-        <h4><%= movie[:title] %></h4>
+        <br/>
+        <h4 style="font-family: 'Fjalla One', sans-serif"><%= movie[:title] %></h4>
         <br/>
         <p><%= movie[:overview] %></p>
       </div>

@@ -5,6 +5,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <%= favicon_link_tag 'icon.png' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,42 +15,23 @@
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <%= link_to image_tag("logo.png", width: "30px", height: "30px"), root_path  %>
+      <%= link_to image_tag("az.png", width: "45px", height: "auto"), root_path  %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Movies <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
+
         </ul>
         <%= form_tag results_path, :method => 'get', class: 'form-inline my-2 my-lg-0' do %>
-          <%= text_field_tag :search, params[:search], class: 'form-control mr-sm-2', type: 'search' %>
-          <%= submit_tag 'Search', :name => nil, class: 'btn btn-outline-info my-2 my-sm-0', type: 'submit' %>
+          <%= text_field_tag :search, params[:search], class: 'form-control mr-sm-2', type: 'search', style: 'font-family: "Fjalla One", sans-serif' %>
+          <%= submit_tag 'Search', :name => nil, class: 'btn btn-outline-info my-2 my-sm-0', type: 'submit', style: 'font-family: "Fjalla One", sans-serif' %>
         <% end %>
       </div>
     </div>
   </nav>
-  <div class="container" style="padding-top: 100px; padding-bottom: 100px">
+  <div class="container" style="padding-top: 100px; padding-bottom: 80px">
     <div class="row">
       <div class="col-lg-12" align="center">
         <% unless flash[:notice].nil? %>
@@ -60,10 +44,10 @@
             <%= flash[:alert] %>
           </div>
         <% end %>
-        <%= image_tag 'logo_az.png', width: '65%', style: 'padding-bottom: 40px', class: 'animated tada' %>
       </div>
     </div>
     <%= yield %>
+    <%= image_tag 'logo_az.png', width: '40%', style: 'padding-bottom: 20px; padding-top: 40px; float: right' %>
   </div>
   </body>
 </html>
