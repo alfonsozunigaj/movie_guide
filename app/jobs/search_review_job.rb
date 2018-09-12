@@ -4,6 +4,8 @@ class SearchReviewJob < ApplicationJob
   include ApplicationHelper
 
   def perform(movie)
-    movie.review.update(score: analyseNYT(movie.review.body))
+    unless movie.review.nil?
+      movie.review.update(score: analyseNYT(movie.review.body))
+    end
   end
 end
