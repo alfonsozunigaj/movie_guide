@@ -45,7 +45,7 @@
           </div>
           <div class="col-sm-7">
             <div class="row-fluid" align="center">
-              <% if @movie.tweets.count < 5 %>
+              <% if @movie.tweets.count < 1 %>
                 <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
               <% else %>
               <div class="span12 text-center" style="font-size: 65px; vertical-align: bottom; display: table-cell"><%=  @opinion.round(1)  %>
