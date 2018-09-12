@@ -4,7 +4,7 @@ class SearchTweetsJob < ApplicationJob
   include ApplicationHelper
 
   def perform(movie)
-    number_of_tweets = 10
+    number_of_tweets = 12
     unless movie.tweets.count >= number_of_tweets
       tweets_title = $twitter_client.search(movie.title, lang: "en", geocode: "37.433810,-81.509156,1000mi")
       $counter = number_of_tweets

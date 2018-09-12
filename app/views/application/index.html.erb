@@ -3,7 +3,7 @@
   <% @most_viewed.each do |movie| %>
     <div class="movie">
       <div class="image">
-        <%= link_to (image_tag movie.poster_path, width: '185px', class: 'zoom polaroid'), movie %>
+        <%= link_to (image_tag movie.poster_path, width: '185px', class: 'zoom polaroid'), save_movie_path(id: movie.tmdb_id) %>
         <h2_movie><span><%= (movie.vote_average.to_f*10).to_i %>%</span></h2_movie>
       </div>
     </div>
