@@ -17,7 +17,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/movie_guide@Development__movie_guide.rcov" NAME="Development: movie_guide Coverage Results" MODIFIED="1536712443428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="movie_guide" />
+    <SUITE FILE_PATH="coverage/movie_guide@Development__movie_guide.rcov" NAME="Development: movie_guide Coverage Results" MODIFIED="1536713444564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="movie_guide" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1742670375">

@@ -24,7 +24,9 @@
           </div>
           <div class="col-sm-7">
             <div class="row-fluid" align="center">
-              <% if @movie.review.nil? or @movie.review.score.nil? %>
+              <% if @movie.review.nil? %>
+                <div class="span12 text-center" style="font-size: xx-large; vertical-align: bottom; display: table-cell">No review</div>
+              <% elsif @movie.review.score.nil? %>
                 <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
               <% else %>
               <div class="span12 text-center" style="font-size: 65px; vertical-align: bottom; display: table-cell"><%=  @movie.review.score  %>
