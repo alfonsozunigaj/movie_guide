@@ -8,7 +8,7 @@
           </div>
           <div class="col-sm-7">
             <div class="row-fluid" align="center">
-              <div class="span12 text-center" style="font-size: 65px; vertical-align: bottom; display: table-cell"><%= (@movie.vote_average.to_s.delete('.').to_i / 20.0).round(1) %><b style="font-size: x-large; color: gray"><i>/ 5.0</i></b></div>
+              <div class="span12 text-center" style="font-size: 3.5vw; vertical-align: bottom; display: table-cell"><%= (@movie.vote_average.to_s.delete('.').to_i / 20.0).round(1) %><b style="font-size: 1.5vw; color: gray"><i>/ 5.0</i></b></div>
             </div>
           </div>
         </div>
@@ -29,8 +29,8 @@
               <% elsif @movie.review.score.nil? %>
                 <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
               <% else %>
-              <div class="span12 text-center" style="font-size: 65px; vertical-align: bottom; display: table-cell"><%=  @movie.review.score  %>
-                <b style="font-size: x-large; color: gray"><i>/ 5.0</i></b></div>
+              <div class="span12 text-center" style="font-size: 3.5vw; vertical-align: bottom; display: table-cell"><%=  @movie.review.score  %>
+                <b style="font-size: 1.5vw; color: gray"><i>/ 5.0</i></b></div>
               <% end %>
             </div>
           </div>
@@ -50,8 +50,8 @@
               <% if @movie.tweets.count < 1 %>
                 <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
               <% else %>
-              <div class="span12 text-center" style="font-size: 65px; vertical-align: bottom; display: table-cell"><%=  @opinion.round(1)  %>
-                <b style="font-size: x-large; color: gray"><i>/ 5.0</i></b></div>
+              <div class="span12 text-center" style="font-size: 3.5vw; vertical-align: bottom; display: table-cell"><%=  @opinion.round(1)  %>
+                <b style="font-size: 1.5vw; color: gray"><i>/ 5.0</i></b></div>
               <% end %>
             </div>
           </div>
@@ -62,7 +62,7 @@
 </div>
 <div class="row">
   <div class="col-sm-4">
-    <%= image_tag @movie.poster_path %>
+    <%= image_tag @movie.poster_path, width: '100%' %>
   </div>
 
   <div class="col-sm-6">
