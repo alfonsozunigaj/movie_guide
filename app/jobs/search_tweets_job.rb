@@ -5,7 +5,7 @@ class SearchTweetsJob < ApplicationJob
 
   def perform(movie)
     tweets_title = $twitter_client.search(movie.title, lang: "en", geocode: "37.433810,-81.509156,1000mi")
-    $counter = 25
+    $counter = 10
     tweets_title.each do |tweet|
       new_tweet = Tweet.new
       new_tweet.content = tweet.text

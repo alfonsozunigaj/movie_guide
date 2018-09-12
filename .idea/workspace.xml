@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43571cb0-6aec-4962-a5b3-007df315ee8d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/jobs/search_tweets_job.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/jobs/search_tweets_job.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -41,7 +40,7 @@
           <entry key="gitignore" value="2" />
           <entry key="js" value="6" />
           <entry key="png" value="1" />
-          <entry key="rb" value="40" />
+          <entry key="rb" value="41" />
           <entry key="scss" value="14" />
           <entry key="yml" value="4" />
         </counts>
@@ -52,7 +51,7 @@
           <entry key="JavaScript" value="6" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="RHTML" value="16" />
-          <entry key="Ruby" value="44" />
+          <entry key="Ruby" value="45" />
           <entry key="SCSS" value="14" />
           <entry key="YAML" value="4" />
         </counts>
@@ -64,7 +63,7 @@
           <entry key="erb" value="4847" />
           <entry key="gitignore" value="34" />
           <entry key="js" value="158" />
-          <entry key="rb" value="4421" />
+          <entry key="rb" value="4423" />
           <entry key="scss" value="311" />
           <entry key="yml" value="177" />
         </counts>
@@ -74,7 +73,7 @@
           <entry key="JavaScript" value="158" />
           <entry key="PLAIN_TEXT" value="51" />
           <entry key="RHTML" value="4847" />
-          <entry key="Ruby" value="4532" />
+          <entry key="Ruby" value="4534" />
           <entry key="SCSS" value="311" />
           <entry key="YAML" value="177" />
         </counts>
@@ -92,11 +91,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="782">
               <caret line="106" column="25" lean-forward="true" selection-start-line="106" selection-start-column="25" selection-end-line="106" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/jobs/search_tweets_job.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -141,7 +149,6 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/config/application.rb" />
-        <option value="$PROJECT_DIR$/app/jobs/search_tweets_job.rb" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/config/initializers/sidekiq.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" />
@@ -152,6 +159,7 @@
         <option value="$PROJECT_DIR$/app/views/movies/show.html.erb" />
         <option value="$PROJECT_DIR$/app/jobs/search_review_job.rb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+        <option value="$PROJECT_DIR$/app/jobs/search_tweets_job.rb" />
       </list>
     </option>
   </component>
@@ -224,6 +232,12 @@
               <item name="movie_guide" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="movie_guide" type="b2602c69:ProjectViewProjectNode" />
+              <item name="movie_guide" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="jobs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="movie_guide" type="b2602c69:ProjectViewProjectNode" />
@@ -395,12 +409,12 @@
       <workItem from="1536614274430" duration="626000" />
       <workItem from="1536616481867" duration="8697000" />
       <workItem from="1536696609749" duration="15682000" />
-      <workItem from="1536715657493" duration="249000" />
+      <workItem from="1536715657493" duration="580000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100387000" />
+    <option name="totallyTimeSpent" value="100718000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -533,13 +547,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/jobs/search_tweets_job.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/application.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -624,6 +631,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
           <caret line="106" column="25" lean-forward="true" selection-start-line="106" selection-start-column="25" selection-end-line="106" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/jobs/search_tweets_job.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
         </state>
       </provider>
     </entry>
