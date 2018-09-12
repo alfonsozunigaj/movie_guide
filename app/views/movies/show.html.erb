@@ -108,7 +108,7 @@
           <a id="show_review_button" onclick="showReview()" class="btn btn-light btn-block">Read the full review</a>
           <br/>
           <p id="review_frame" hidden><%= @movie.review.body %><br/></p>
-          <a href="<%= @movie.review.url %>" class="btn btn-light btn-block">Go to NYT website</a>
+          <a href="<%= @movie.review.url %>" class="btn btn-light btn-block" target="_blank">Go to NYT website</a>
         <% end %>
       </div>
     </div>
