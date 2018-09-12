@@ -85,6 +85,25 @@ class ApplicationController < ActionController::Base
         redirect_to root_path, alert: 'Movie could not be saved'
       end
     else
+      if checked.review.nil?
+        nyt_info = nyt_review(checked.title)
+        unless nyt_info.nil?
+          critics_pick = nyt_info['critics_pick']
+          headline = nyt_info['headline']
+          summary = nyt_info['summary_short']
+          url = nyt_info['link']['url']
+          movie = @movie
+          body = getNYT(url)
+          review = Review.new(critics_pick: critics_pick, headline: headline, summary: summary, url: url, movie: movie, body: body)
+          if review.valid?
+            review.save
+            checked.update(review: review)
+          end
+        end
+        SearchReviewJob.perform_later(checked)
+      elsif checked.review.score == 0.0
+        SearchReviewJob.perform_later(checked)
+      end
       redirect_to checked
     end
   end
